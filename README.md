@@ -10,4 +10,10 @@
 
  - [записи](./2-SLAE/notes.pdf)
 
- - [написанные методы](./2-SLAE/linsolver.py)
+ - [написанные методы](./linsolver.py)
+
+## 3. Распределение температур
+
+ - [решение](./3-temperatures/solution.ipynb)
+
+ - [расширенное приложение](./thermal_room_app/main.py)

@@ -1,0 +1,65 @@
+{
+  "width": 8.0,
+  "height": 6.0,
+  "step": 0.1,
+  "outdoor_temperature": -10.0,
+  "air_conductivity": 0.1,
+  "concrete_conductivity": 1.4,
+  "window_conductivity": 0.8,
+  "walls": [
+    {
+      "x1": 1.2,
+      "y1": 1.0,
+      "x2": 6.8,
+      "y2": 1.0,
+      "thickness": 0.25,
+      "windows": [
+        {
+          "centre": 0.5,
+          "length": 1.5
+        }
+      ]
+    },
+    {
+      "x1": 6.8,
+      "y1": 1.0,
+      "x2": 6.8,
+      "y2": 5.0,
+      "thickness": 0.25,
+      "windows": [
+        {
+          "centre": 0.55,
+          "length": 1.0
+        }
+      ]
+    },
+    {
+      "x1": 6.8,
+      "y1": 5.0,
+      "x2": 1.2,
+      "y2": 5.0,
+      "thickness": 0.25,
+      "windows": []
+    },
+    {
+      "x1": 1.2,
+      "y1": 5.0,
+      "x2": 1.2,
+      "y2": 1.0,
+      "thickness": 0.25,
+      "windows": []
+    }
+  ],
+  "heaters": [
+    {
+      "x": 3.2,
+      "y": 3.0,
+      "radius": 0.55,
+      "temperature": 40.0
+    }
+  ],
+  "street_seed": [
+    0.4,
+    0.4
+  ]
+}
