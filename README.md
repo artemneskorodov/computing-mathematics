@@ -12,8 +12,12 @@
 
  - [написанные методы](./linsolver.py)
 
-## 3. Распределение температур
+## Распределение температур
 
- - [решение](./3-temperatures/solution.ipynb)
+ - [решение](./thermal_distribution/solution.ipynb)
 
  - [расширенное приложение](./thermal_room_app/main.py)
+
+## 3. Нелинейные уравнения
+
+ - [решение](./3-nonlinear-equation/solution.ipynb)
