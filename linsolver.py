@@ -272,28 +272,40 @@ def solveMinimalResidual(
 # Метод сопряженных градиентов.
 #
 def solveCG(
-    equation: Equation, n_iter, callback: IterationCallback = None
+    equation: Equation, n_iter, callback: IterationCallback = None, tol: float = 0.0
 ) -> nptp.NDArray[np.float32]:
+    """Conjugate gradients for a positive definite dense or sparse matrix.
+
+    Stop when the Euclidean residual is at most ``tol * max(1, ||b||)``.
+    With the default tolerance, retain the requested fixed iteration count.
+    """
     A = equation.A
     b = equation.b
     n = equation.n
 
     x = np.ones(n)
     r = b - A @ x
-    p = r
     _call_iteration_callback(callback, 0, x)
+    rr = float(np.dot(r, r))
+    threshold = tol * max(1.0, float(np.linalg.norm(b)))
+    if rr == 0.0 or (tol > 0 and np.sqrt(rr) <= threshold):
+        return x
+    p = r.copy()
 
     for iteration in range(1, n_iter + 1):
-        alpha = np.dot(p, r) / np.dot(p, A @ p)
-        next_x = x + alpha * p
-        next_r = r - alpha * (A @ p)
-        beta = np.dot(next_r, next_r) / np.dot(r, r)
-        next_p = next_r + beta * p
-
-        x = next_x
-        r = next_r
-        p = next_p
+        Ap = A @ p
+        denominator = float(np.dot(p, Ap))
+        if denominator <= 0 or not np.isfinite(denominator):
+            raise ValueError("CG requires a symmetric positive definite matrix")
+        alpha = rr / denominator
+        x = x + alpha * p
+        r = r - alpha * Ap
         _call_iteration_callback(callback, iteration, x)
+        next_rr = float(np.dot(r, r))
+        if next_rr == 0.0 or (tol > 0 and np.sqrt(next_rr) <= threshold):
+            return x
+        p = r + (next_rr / rr) * p
+        rr = next_rr
 
     return x
 
