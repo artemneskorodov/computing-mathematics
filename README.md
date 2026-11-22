@@ -21,3 +21,9 @@
 ## 3. Нелинейные уравнения
 
  - [решение](./3-nonlinear-equation/solution.ipynb)
+
+## Жесткая задача
+
+ - [проверка сходимости](./stiff-task/order_check.ipynb)
+
+ - [решения](./stiff-task/solution.ipynb)
